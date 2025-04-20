@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.quinn.finance.mapper.TransactionMapper">
+
+    <select id="queryTransactions" resultType="com.quinn.finance.entity.Transaction">
+        SELECT *
+        FROM fin_transaction
+        WHERE user_id = #{userId}
+        <if test="startDate != null">
+            AND date &gt;= #{startDate}
+        </if>
+        <if test="endDate != null">
+            AND date &lt;= #{endDate}
+        </if>
+        <if test="type != null and type >= 0" >
+            AND type = #{type}
+        </if>
+        <if test="category != null and category > ''">
+            AND category = #{category}
+        </if>
+        ORDER BY date DESC
+    </select>
+
+</mapper>
