@@ -44,7 +44,7 @@ springdoc:
   swagger-ui:
     enabled: true
     path: /swagger-ui.html
-  packages-to-scan: com.example.finance.controller
+  packages-to-scan: com.quinn.finance.controller
 
 quinn:
   check:
